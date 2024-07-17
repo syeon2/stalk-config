@@ -1,0 +1,26 @@
+server:
+  port: 8888
+
+spring:
+  profiles:
+    group:
+      native: native
+      prod: prod
+
+    active: prod
+
+---
+spring:
+  config:
+    activate:
+      on-profile: native
+
+  cloud:
+    config:
+      server:
+        native:
+          search-locations:
+            - file://${user.home}//Desktop/project/stalk-app/config-files
+            - file://${user.home}//Desktop/project/stalk-app/config-files/{application}
+
+---

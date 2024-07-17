@@ -28,6 +28,7 @@ dependencies {
 
     // spring cloud
     implementation("org.springframework.cloud:spring-cloud-config-server")
+    implementation("org.springframework.cloud:spring-cloud-starter-bootstrap")
 
     // test
     testImplementation("org.springframework.boot:spring-boot-starter-test")
@@ -49,4 +50,10 @@ kotlin {
 
 tasks.withType<Test> {
     useJUnitPlatform()
+}
+
+tasks {
+    jar {
+        enabled = false
+    }
 }
