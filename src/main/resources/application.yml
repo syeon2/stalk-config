@@ -32,6 +32,12 @@ spring:
             - file://${user.home}//Desktop/project/stalk-app/config-files
             - file://${user.home}//Desktop/project/stalk-app/config-files/{application}
 
+  rabbitmq:
+    host: localhost
+    port: 5672
+    username: local
+    password: local
+
 ---
 spring:
   config:
@@ -52,4 +58,8 @@ spring:
           passphrase: ENC(qZH8KJty5ptRpazSaFZ1l6Ctr9oQv1u+)
           search-paths: /**
 
----
+  rabbitmq:
+    host: ENC(xURV9FAFY4KsYNWrCONMS0O+8uP9tH50)
+    port: 5672
+    username: ENC(TbUSV96RtjhmhGPPbWG44m2AOetRoQIO)
+    password: ENC(L49b7/ED25givB3e96S+UynctZyPZgQw)

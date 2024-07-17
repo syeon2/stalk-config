@@ -30,6 +30,7 @@ dependencies {
     implementation("org.springframework.cloud:spring-cloud-config-server")
     implementation("org.springframework.cloud:spring-cloud-starter-bootstrap")
     implementation("com.github.ulisesbocchio:jasypt-spring-boot-starter:3.0.5")
+    implementation("org.springframework.cloud:spring-cloud-starter-bus-amqp")
 
     // monitor
     implementation("org.springframework.boot:spring-boot-starter-actuator")
