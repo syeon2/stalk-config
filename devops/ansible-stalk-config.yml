@@ -1,0 +1,21 @@
+- hosts: stalk-config
+  become: true
+
+  tasks:
+    - name: stop the cloud config service container
+      command: docker stop stalk-config
+      ignore_errors: yes
+
+    - name: remove the cloud config service container
+      command: docker rm stalk-config
+      ignore_errors: yes
+
+    - name: remove the cloud config service docker image
+      command: docker rmi waterkite94/stalk-config
+      ignore_errors: yes
+
+    - name: pull the cloud config service image from docker hub
+      command: docker pull waterkite94/stalk-config
+
+    - name: execute cloud config service container
+      command: docker run -d -p 8888:8888 --name stalk-config --network stalk-network waterkite94/stalk-config
