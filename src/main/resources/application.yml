@@ -6,8 +6,17 @@ spring:
     group:
       native: native
       prod: prod
-
     active: prod
+
+jasypt:
+  encryptor:
+    password: ${ENCRYPT_PASSWORD}
+
+management:
+  endpoints:
+    web:
+      exposure:
+        include: refresh, health, httptrace, busrefresh
 
 ---
 spring:
@@ -22,5 +31,25 @@ spring:
           search-locations:
             - file://${user.home}//Desktop/project/stalk-app/config-files
             - file://${user.home}//Desktop/project/stalk-app/config-files/{application}
+
+---
+spring:
+  config:
+    activate:
+      on-profile: prod
+
+  cloud:
+    config:
+      server:
+        git:
+          uri: git@github.com:syeon2/stalk-config-files.git
+          default-label: main
+          ignore-local-ssh-settings: true
+          strict-host-key-checking: false
+          host-key: AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBEmKSENjQEezOmxkZMy7opKgwFB9nkt5YRrYMjNuG5N87uRgg6CLrbo5wAdT/y6v0mKV0U2w0WZ2YB/++Tpockg=
+          host-key-algorithm: ecdsa-sha2-nistp256
+          private-key: ENC(YDKsrorBUynkrAm9ciahWbIUGVsDhm5sqR5BfXO/YwpJQjVUw3mvEzbHH32NPRN/0dJLI7xF9EPv5Ps3mS4VNNWfSmwVGY6fBgCw+ZUoN/CqYYeTcGuct5/gSC4W0OkY6gDkoAjVv8FZJOPNj2T0SWplPYeCAC2deIiNFE7VufcXOGcMU4KmGXc9FemtiKrYESXircoP4OphgL2wdUzaq4q5RbZkdNZSWeU78zDXcp3Y9e99EwtBwsp4DeiscBovLIW5sO3uUQK0r67aUGVSOY033NMhwoHPWA7go5rktttEobThKN5MkV/ZjSqgkCm4Kz/MS+XG/PEGNR702OCjak0/GKVKUNkjDrKPzayy4m/sVjfO/oeOjH5tYVjc8Fwh6FXEid/XW5SMdLqnlxR0g0ZhcC2Bx20HkUE8fKK7CnFoAcC+/zYayzE20afocjtbALyz79YgU2sggE7oEzJnPPt1zM38qf6L3QfPTe8Ozb10EKmklPpGnYQ0eAwk3bjXp8N/4CYqyKUtw3uV96xDX9YiCrhvwVVwNd79aJiDPFs=)
+          passphrase: ENC(qZH8KJty5ptRpazSaFZ1l6Ctr9oQv1u+)
+          search-paths: /**
 
 ---

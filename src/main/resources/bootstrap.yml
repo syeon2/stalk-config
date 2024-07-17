@@ -1,0 +1,9 @@
+spring:
+  cloud:
+    config:
+      server:
+        encrypt:
+          enabled: false
+
+encrypt:
+  key: ${ENCRYPT_PASSWORD}
