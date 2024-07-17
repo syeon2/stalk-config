@@ -3,6 +3,8 @@ plugins {
     id("io.spring.dependency-management") version "1.1.5"
     kotlin("jvm") version "1.9.24"
     kotlin("plugin.spring") version "1.9.24"
+
+    id("org.jlleitschuh.gradle.ktlint") version "12.1.1"
 }
 
 group = "io.waterkite94.stalk"
@@ -21,8 +23,13 @@ repositories {
 extra["springCloudVersion"] = "2023.0.3"
 
 dependencies {
+    // base config
     implementation("org.jetbrains.kotlin:kotlin-reflect")
+
+    // spring cloud
     implementation("org.springframework.cloud:spring-cloud-config-server")
+
+    // test
     testImplementation("org.springframework.boot:spring-boot-starter-test")
     testImplementation("org.jetbrains.kotlin:kotlin-test-junit5")
     testRuntimeOnly("org.junit.platform:junit-platform-launcher")
